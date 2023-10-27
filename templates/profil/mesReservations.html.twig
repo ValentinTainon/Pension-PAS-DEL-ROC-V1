@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Réservations
+{% endblock %}
+
+{% block body %}
+	<div class="reservation-list-container">
+		<h1>Mes Réservations</h1>
+		<a href="{{ path('app_profil') }}" class="retour">Retour</a>
+		<div class="reservation-list-content">
+			{% if is_granted('ROLE_ADMIN') %}
+				<div class="header-list">
+					<div class="nbrReservation-container">Nombre de réservations :
+						<div class="nbrReservation"></div>
+					</div>
+					<div class="box-list">
+						<button class="status en-cours">Demande en cours de traitement</button>
+						<button class="status valider">Validée</button>
+						<button class="status refuser">Refusée</button>
+						<button class="status annuler">Annulée</button>
+					</div>
+				</div>
+			{% endif %}
+			<div class="reservation-list">
+				{% for reservation in reservations %}
+					<div class="reservation-row">
+						<div class="box">{{ reservation.user.prenom }} {{ reservation.user.nom }}</div>
+						<div class="box">{{ reservation.dateCreation }}</div>
+						<div class="box dateFin">{{ reservation.dateFin }}</div>
+						<div class="box">{{ reservation.status }}</div>
+						<a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">
+							<i class="fa-solid fa-pen"></i>
+						</a>
+						<a class="avis-icon" href="{{path('app_commentaire', {'id' : app.user.id})}}">
+							<i class="fa-solid fa-star"></i>
+						</a>
+					</div>
+				{% else %}
+					<p>Aucune réservation enregistré</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

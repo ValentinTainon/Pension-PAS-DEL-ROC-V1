@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+    <div class="reservation-container">
+        <h1>Réservation Séjour</h1>
+        {{ include('reservation/_form.html.twig', {'submit_label': 'Réserver'}) }}
+    </div>
+{% endblock %}

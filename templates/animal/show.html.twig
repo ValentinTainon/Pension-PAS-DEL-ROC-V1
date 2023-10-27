@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Animal{% endblock %}
+
+{% block body %}
+    <h1>Animal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ animal.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ animal.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ animal.type }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ animal.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Race</th>
+                <td>{{ animal.race }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ animal.age }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ animal.poids }}</td>
+            </tr>
+            <tr>
+                <th>NumPuce</th>
+                <td>{{ animal.numPuce }}</td>
+            </tr>
+            <tr>
+                <th>Sterilisation</th>
+                <td>{{ animal.sterilisation ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateChaleurs</th>
+                <td>{{ animal.dateChaleurs }}</td>
+            </tr>
+            <tr>
+                <th>Medical</th>
+                <td>{{ animal.medical ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>OrdonnanceFile</th>
+                <td>{{ animal.ordonnanceFile }}</td>
+            </tr>
+            <tr>
+                <th>InfoSup</th>
+                <td>{{ animal.infoSup }}</td>
+            </tr>
+            <tr>
+                <th>Vaccins</th>
+                <td>{{ animal.vaccins ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Vermifuge</th>
+                <td>{{ animal.vermifuge ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Alimentation</th>
+                <td>{{ animal.alimentation ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Traitement</th>
+                <td>{{ animal.traitement ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_animal_index') }}">back to list</a>
+
+    <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
+
+    {{ include('animal/_delete_form.html.twig') }}
+{% endblock %}

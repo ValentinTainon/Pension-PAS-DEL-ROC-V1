@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre d'or
+{% endblock %}
+
+{% block body %}
+	<div class="commentaire-container">
+		{{ form_start(form, { 'attr' : { 'class': 'commentaire-form-container' } }) }}
+			<h2>Écrivez-nous un commentaire !</h2>
+			{{ form_row(form.commentaire) }}
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

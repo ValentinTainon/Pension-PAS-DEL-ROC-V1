@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil
+{% endblock %}
+
+{% block body %}
+	<div class="profil-container">
+		<h1>Bienvenue {{ app.user.username }}</h1>
+		<div class="cards-container">
+			<a class="profil-link" href="{{path('app_user_edit', {'id' : app.user.id})}}">
+				<div class="profil-card">
+					<i class="fa-solid fa-user"></i>
+					<h2>Informations Personnelles</h2>
+					<p>Compléter et modifier mes informations personnelles</p>
+				</div>
+			</a>
+			<a class="profil-link" href="{{path('app_animal_index')}}">
+				<div class="profil-card">
+					<i class="fa-solid fa-paw"></i>
+					<h2>Fiches Animaux</h2>
+					<p>Compléter et modifier les informations de mes animaux</p>
+				</div>
+			</a>
+			<a class="profil-link" href="{{path('app_mesReservations', {'id' : app.user.id})}}">
+				<div class="profil-card">
+					<i class="fa-solid fa-file"></i>
+					<h2>Mes Réservations</h2>
+					<p>Suivre et gérer mes réservations</p>
+				</div>
+			</a>
+		</div>
+	</div>
+{% endblock %}

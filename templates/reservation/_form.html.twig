@@ -1,0 +1,86 @@
+{# FORMULAIRE RESERVATION #}
+{{ form_start(form, { 'attr' : { 'id': 'reservation-form', 'class': 'reservation-form-container' } }) }}
+	{# PARTIE CLIENT #}
+	<div class="user-part">
+		<h2>Informations personnelles</h2>
+		<div class="row">
+			{{ form_row(form.user.nom) }}
+			{{ form_row(form.user.prenom) }}
+			{{ form_row(form.user.email) }}
+		</div>
+		<div class="row">
+			{{ form_row(form.user.adresse) }}
+			{{ form_row(form.user.telephone) }}
+		</div>
+		<div class="row">
+			{{ form_row(form.user.codePostal) }}
+			{{ form_row(form.user.ville) }}
+		</div>
+	</div>
+	{# PARTIE ANIMAL #}
+	<div class="animal-part">
+		<h2>Mon animal</h2>
+		{# <div class="row">
+			{{ form_row(form.animal.selectAnimal) }}
+		</div> #}
+		<div class="row">
+			{{ form_row(form.animal.nom) }}
+			{{ form_row(form.animal.type) }}
+			{{ form_row(form.animal.sexe) }}
+		</div>
+		<div class="row">
+			{{ form_row(form.animal.race) }}
+			{{ form_row(form.animal.age) }}
+			{{ form_row(form.animal.poids) }}
+		</div>
+		<div class="sterilisation-row">
+			{{ form_row(form.animal.numPuce) }}
+			{{ form_row(form.animal.sterilisation) }}
+			<div class="chaleurs-group">
+				{{ form_label(form.animal.dateChaleurs) }}
+				{{ form_widget(form.animal.dateChaleurs) }}
+			</div>
+		</div>
+		<div class="medical-row">
+			{{ form_row(form.animal.medical) }}
+			<div class="file-group">
+				{{ form_label(form.animal.ordonnance) }}
+				{{ form_widget(form.animal.ordonnance) }}
+				<small>{{ form_help(form.animal.ordonnance) }}</small>
+			</div>
+		{# {% if is_granted('ROLE_ADMIN') %}
+				{% for animal in animals %}
+					<a href="{{asset('uploads/ordonnances/' ~ animal.ordonnance )}}" target="_blank" class="doc-file">Voir le fichier</a>
+				{% endfor %}
+			{% endif %} #}
+		</div>
+		{{ form_row(form.animal.infoSup) }}
+		<p class="terms">Je m'engage :</p>
+		{{ form_row(form.animal.vaccins) }}
+		{{ form_row(form.animal.vermifuge) }}
+		{{ form_row(form.animal.alimentation) }}
+		<div class="traitement-group">
+			{{ form_label(form.animal.traitement) }}
+			{{ form_widget(form.animal.traitement, { 'attr' : { 'id': 'reservation_animal_traitement' }}) }}
+		</div>
+	</div>
+	{# PARTIE DATES ET PRIX #}
+	<div class="end-part">
+		<h2>Dates du séjour</h2>
+		<div class="row">
+			{{ form_row(form.dateDebut) }}
+			{{ form_row(form.dateFin) }}
+		</div>
+		{{ form_row(form.prix) }}
+		<div class="row">
+			{{ form_row(form.submit, {'label': submit_label}) }}
+			{{ form_row(form.annuler) }}
+		</div>
+		{% if is_granted('ROLE_ADMIN') %}
+			<div class="row">
+				{{ form_row(form.valider) }}
+				{{ form_row(form.refuser) }}
+			</div>
+		{% endif %}
+	</div>
+{{ form_end(form) }}

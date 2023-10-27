@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+	<div class="animal-container-index">
+		<h1>Fiches Animaux</h1>
+		<div class="boutons">
+			<a href="{{ path('app_animal_new') }}" class="ajouter">Créer</a>
+			<a href="{{ path('app_profil') }}" class="retour">Retour</a>
+		</div>
+		<div class="animaux-list">
+			{% for animal in animals %}
+				<a href="{{ path('app_animal_edit', {'id': animal.id}) }}">{{ animal.nom }}<br>Voir / Modifier</a>
+			{% else %}
+				<p>Aucun animal enregistré</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

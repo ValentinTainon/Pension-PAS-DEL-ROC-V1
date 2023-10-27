@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block body %}
+<div class="reservation-container">
+    <h1>Modifier votre réservation</h1>
+    {{ include('reservation/_form.html.twig', {'submit_label': 'Enregistrer les modifications'}) }}
+    <a href="{{ path('app_mesReservations') }}" class="retour">Retour</a>
+</div>
+{% endblock %}
